@@ -1,0 +1,18 @@
+snippet lex "lexical_cast"
+	lexical_cast<${1:std::string}>(${2})
+endsnippet
+
+snippet blex "boost::lexical_cast"
+	boost::lexical_cast<${1:std::string}>(${2})
+endsnippet
+
+snippet getopt  "getopt"
+	char c = 0;
+	while ((c = getopt(argc, argv, "${1:h}")) != -1) {
+		case '?':
+			usage(argv[0]);
+			return -1;
+			break;
+	}
+endsnippet
+

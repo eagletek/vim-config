@@ -1,0 +1,46 @@
+
+snippet sfore "std::for_each (fore)"
+std::for_each(${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end(), ${2:function});
+endsnippet
+
+snippet fore "BOOST_FOREACH (fore)"
+BOOST_FOREACH(${1:type} ${2:name}, ${3:collection})
+{
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+}
+endsnippet
+
+snippet rfor "C++11 range-for loop"
+for(${1:type} ${2:name} : ${3:collection})
+{
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+}
+endsnippet
+
+snippet ptime "boost::posix_time::ptime (ptime)"
+boost::posix_time::ptime ${1:time};
+endsnippet
+
+snippet localtime "boost::posix_time::microsec_clock::local_time()"
+boost::posix_time::microsec_clock::local_time()
+endsnippet
+
+snippet utctime "boost::posix_time::microsec_clock::universal_time()"
+boost::posix_time::microsec_clock::universal_time()
+endsnippet
+
+snippet sp "boost::shared_ptr<T>" b
+boost::shared_ptr<${1:T}> ${2:ptr};
+endsnippet
+
+snippet todo "TODO reminder" b
+// TODO: ${1:description} `echo "($USER)"` `!v strftime("%Y-%b-%d %H:%M%z")`
+endsnippet
+
+snippet fixme "FIXME reminder" b
+// FIXME: ${1:description} `echo "($USER)"` `!v strftime("%Y-%b-%d %H:%M%z")`
+endsnippet
+
+snippet incl "#include cpp header (inc)"
+#include "${1:`!p snip.rv = snip.basename + '.hpp'`}"
+endsnippet
