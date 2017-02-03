@@ -16,6 +16,10 @@ set columns=88
 " + nerdtree pane (32)
 "set columns=120
 
+"""" Indent Guides -- https://github.com/Yggdroot/indentLine
+let g:indentLine_color_gui = '#2a2a2a'
+let g:indentLine_char = '│'
+
 " disable commands that could be used maliciously from being executed
 " from the vimrc file located in the current working directory
 set secure
