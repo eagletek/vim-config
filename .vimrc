@@ -122,10 +122,10 @@ autocmd FileType c set formatoptions+=ro
 autocmd FileType java set smartindent
 autocmd FileType perl set smartindent
 autocmd FileType make set noexpandtab shiftwidth=4
-autocmd FileType html,css,php set shiftwidth=2
-autocmd FileType html,css,php set softtabstop=2
-autocmd FileType html,css,php set tabstop=2
-autocmd FileType html,css,php retab
+autocmd FileType ruby,html,css,php set shiftwidth=2
+autocmd FileType ruby,html,css,php set softtabstop=2
+autocmd FileType ruby,html,css,php set tabstop=2
+autocmd FileType ruby,html,css,php retab
 
 " sets the highlighting to doxygen
 au BufNewFile,BufRead *.doxygen setfiletype doxygen
