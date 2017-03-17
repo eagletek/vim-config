@@ -55,3 +55,6 @@
 [submodule ".vim/bundle/vim-polyglot"]
 	path = .vim/bundle/vim-polyglot
 	url = git@github.com:sheerun/vim-polyglot.git
+[submodule ".vim/bundle/vim-coloresque"]
+	path = .vim/bundle/vim-coloresque
+	url = git@github.com:gko/vim-coloresque.git
