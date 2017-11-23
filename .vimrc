@@ -60,12 +60,12 @@ set ttimeoutlen=50
 """" }}}
 """" Indentation {{{
 
-" Indents are often more readable if they consist of four spaces
+" Indents are often more readable if they consist of spaces
 " rather than a tab character; this affects the >/< keys in normal
 " mode, and <Ctrl>+T/<Ctrl>+D  in insert mode:
-set shiftwidth=4        " A four space indent shift
-set softtabstop=4
-set tabstop=4           " A four space tab stop
+set shiftwidth=2        " A four space indent shift
+set softtabstop=2
+set tabstop=2           " A four space tab stop
 set shiftround
 set expandtab
 set smarttab
@@ -121,11 +121,11 @@ autocmd FileType html,php set fdm=marker
 autocmd FileType c set formatoptions+=ro
 autocmd FileType java set smartindent
 autocmd FileType perl set smartindent
-autocmd FileType make set noexpandtab shiftwidth=4
-autocmd FileType ruby,html,css,php set shiftwidth=2
-autocmd FileType ruby,html,css,php set softtabstop=2
-autocmd FileType ruby,html,css,php set tabstop=2
-autocmd FileType ruby,html,css,php retab
+autocmd FileType make setlocal noexpandtab shiftwidth=4
+autocmd FileType ruby,html,css,php,javascript setlocal shiftwidth=2
+autocmd FileType ruby,html,css,php,javascript setlocal softtabstop=2
+autocmd FileType ruby,html,css,php,javascript setlocal tabstop=2
+autocmd FileType ruby,html,css,php,javascript retab
 
 " sets the highlighting to doxygen
 au BufNewFile,BufRead *.doxygen setfiletype doxygen
