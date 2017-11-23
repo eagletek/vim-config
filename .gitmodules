@@ -58,3 +58,9 @@
 [submodule ".vim/bundle/vim-coloresque"]
 	path = .vim/bundle/vim-coloresque
 	url = git@github.com:gko/vim-coloresque.git
+[submodule ".vim/bundle/vim-commentary"]
+	path = .vim/bundle/vim-commentary
+	url = git@github.com:tpope/vim-commentary.git
+[submodule ".vim/bundle/vim-colors-solarized"]
+	path = .vim/bundle/vim-colors-solarized
+	url = git@github.com:altercation/vim-colors-solarized.git

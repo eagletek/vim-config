@@ -1,6 +1,7 @@
 """" Display
 set bg=dark
-colors slate2     " set color scheme
+" colors slate2     " set color scheme
+colors solarized
 set gfn=Inconsolata\ for\ Powerline\ 14 " set font
 set guioptions+=b " add bottom scrollbar
 set guioptions-=T " don't display toolbar
