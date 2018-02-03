@@ -1,7 +1,7 @@
 """" Display
 set bg=dark
-" colors slate2     " set color scheme
-colors solarized
+colors slate2     " set color scheme
+"colors solarized
 set gfn=Inconsolata\ for\ Powerline\ 14 " set font
 set guioptions+=b " add bottom scrollbar
 set guioptions-=T " don't display toolbar
@@ -18,7 +18,7 @@ set columns=88
 "set columns=120
 
 """" Indent Guides -- https://github.com/Yggdroot/indentLine
-let g:indentLine_color_gui = '#2a2a2a'
+let g:indentLine_color_gui = '#3a3a3a'
 let g:indentLine_char = '│'
 
 " disable commands that could be used maliciously from being executed
