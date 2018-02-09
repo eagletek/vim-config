@@ -36,7 +36,7 @@ set showmatch     " briefly jump to bracket match for 3/10 of a second
 set ruler         " show cursor position
 set showcmd       " Show (partial) command in status line.
 set number        " line numbering
-set scrolloff=5   " always try to show lines above or below cursor while scrolling
+set scrolloff=3   " always try to show lines above or below cursor while scrolling
 set wildignore+=*.o,*.ko,*.a,*.so,*.dep,abuild-linux.*,*.gcda,*.gcno
 """" }}}
 """" Searching {{{
@@ -45,6 +45,8 @@ set incsearch     " incremental searching
 set ignorecase    " case-insensitive
 set smartcase
 set gdefault      " global replace by default
+
+set path+=**      " find files in all subdirectories
 """" }}}
 """" Miscellaneous {{{
 set complete=.,w,b,u,t,i " completion search order
@@ -122,10 +124,25 @@ autocmd FileType c set formatoptions+=ro
 autocmd FileType java set smartindent
 autocmd FileType perl set smartindent
 autocmd FileType make setlocal noexpandtab shiftwidth=4
-autocmd FileType ruby,html,css,php,javascript setlocal shiftwidth=2
-autocmd FileType ruby,html,css,php,javascript setlocal softtabstop=2
-autocmd FileType ruby,html,css,php,javascript setlocal tabstop=2
-autocmd FileType ruby,html,css,php,javascript retab
+autocmd FileType ruby,erb,haml,html,css,php,javascript setlocal shiftwidth=2
+autocmd FileType ruby,erb,haml,html,css,php,javascript setlocal softtabstop=2
+autocmd FileType ruby,erb,haml,html,css,php,javascript setlocal tabstop=2
+autocmd FileType ruby,erb,haml,html,css,php,javascript retab
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader>r :GoRun<cr>
+autocmd FileType go nmap <leader>t :GoTest<cr>
+autocmd FileType go nmap <leader>tc :GoCoverageToggle<cr>
 
 " sets the highlighting to doxygen
 au BufNewFile,BufRead *.doxygen setfiletype doxygen
@@ -163,6 +180,10 @@ noremap <leader>bw :w<cr>:bn<cr>
 set makeprg=make
 noremap <leader>m :w<cr>:make -j6 install<cr>
 imap m   <esc>:w<cr>:make<cr>
+" Quickfix
+noremap <leader>cn :cnext<cr>
+noremap <leader>cp :cprevious<cr>
+nnoremap <leader>cc :cclose<cr>
 
 " Copy/Paste with system clipboard
 noremap <leader>p "+gP
@@ -230,6 +251,37 @@ let g:CppToolkit_authorName="Josh O'Connell"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#checks = [ 'indent' ]
+let g:airline_theme='wombat'
+
+" vim-go
+
+let g:go_fmt_command = "goimports"
+
+" Rainbow Parentheses
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
 """" }}}
 
 " Custom function to display first line of text from doxygen / javadoc style
